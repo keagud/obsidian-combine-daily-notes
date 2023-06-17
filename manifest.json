@@ -1,0 +1,10 @@
+{
+  "id": "combine-daily-notes",
+  "name": "Combine Daily Notes",
+  "version": "1.0.0",
+  "minAppVersion": "0.15.0",
+  "description": "Combine your daily notes for the week into a single file",
+  "author": "Keaton Guderian",
+  "authorUrl": "https://implicit.computer",
+  "isDesktopOnly": true
+}
