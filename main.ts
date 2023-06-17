@@ -19,9 +19,9 @@ module.exports = class CombineDailyNotes extends Plugin {
 
     // this is a bad hack
     // but it works for now
-    const py_script = path.join(vault_root, config_dir, "plugins", "combine-daily-notes", "combine.py")
+    const py_script = path.join(vault_root, config_dir, "plugins", "obsidian-combine-daily-notes", "combine.py")
     
-    const output_dir = path.join(vault_root, "weekly/");
+    const output_dir = path.join(vault_root, "Weekly/");
 
     return execFile(
       py_script,

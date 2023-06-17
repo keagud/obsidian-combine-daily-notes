@@ -41,24 +41,19 @@ module.exports = class CombineDailyNotes extends import_obsidian.Plugin {
   async onload() {
     const vault_root = getVaultRoot(this.app);
     const config_dir = this.app.vault.configDir;
-    const py_script = path.join(vault_root, config_dir, "plugins", "combine-daily-notes", "combine.py");
-    const output_dir = path.join(vault_root, "weekly/");
-    new import_obsidian.Notice(`${py_script} ${vault_root}-> ${output_dir} `);
+    const py_script = path.join(vault_root, config_dir, "plugins", "obsidian-combine-daily-notes", "combine.py");
+    const output_dir = path.join(vault_root, "Weekly/");
     return (0, import_child_process.execFile)(
       py_script,
       [vault_root, output_dir, "clean"],
       (error, stdout, stderr) => {
         if (error) {
+          new import_obsidian.Notice(stderr);
           throw error;
         }
-        new import_obsidian.Notice(stderr);
-        new import_obsidian.Notice(stdout);
-        console.log(stderr);
-        console.log(stdout);
       }
     );
   }
   async onunload() {
   }
 };
-//# sourceMappingURL=data:application/json;base64,ewogICJ2ZXJzaW9uIjogMywKICAic291cmNlcyI6IFsibWFpbi50cyJdLAogICJzb3VyY2VzQ29udGVudCI6IFsiaW1wb3J0IHsgUGx1Z2luLCBBcHAsIE5vdGljZSwgRmlsZVN5c3RlbUFkYXB0ZXIgfSBmcm9tIFwib2JzaWRpYW5cIjtcbmltcG9ydCB7IGV4ZWNGaWxlIH0gZnJvbSBcImNoaWxkX3Byb2Nlc3NcIjtcbmltcG9ydCAqIGFzIHBhdGggZnJvbSBcInBhdGhcIjtcblxuZnVuY3Rpb24gZ2V0VmF1bHRSb290KGFwcDogQXBwKTogc3RyaW5nIHtcbiAgbGV0IGFkYXB0ZXIgPSBhcHAudmF1bHQuYWRhcHRlcjtcblxuICBpZiAoYWRhcHRlciBpbnN0YW5jZW9mIEZpbGVTeXN0ZW1BZGFwdGVyKSB7XG4gICAgcmV0dXJuIGFkYXB0ZXIuZ2V0QmFzZVBhdGgoKTtcbiAgfVxuICB0aHJvdyBcIkNhbid0IGZpbmQgdGhlIHZhdWx0IHJvb3QgcGF0aFwiO1xufVxuXG5tb2R1bGUuZXhwb3J0cyA9IGNsYXNzIENvbWJpbmVEYWlseU5vdGVzIGV4dGVuZHMgUGx1Z2luIHtcbiAgYXN5bmMgb25sb2FkKCkge1xuICAgIGNvbnN0IHZhdWx0X3Jvb3QgPSBnZXRWYXVsdFJvb3QodGhpcy5hcHApO1xuXG4gICAgY29uc3QgY29uZmlnX2RpciA9IHRoaXMuYXBwLnZhdWx0LmNvbmZpZ0RpclxuXG4gICAgY29uc3QgcHlfc2NyaXB0ID0gcGF0aC5qb2luKHZhdWx0X3Jvb3QsIGNvbmZpZ19kaXIsIFwicGx1Z2luc1wiLCBcImNvbWJpbmUtZGFpbHktbm90ZXNcIiwgXCJjb21iaW5lLnB5XCIpXG4gICAgXG4gICAgY29uc3Qgb3V0cHV0X2RpciA9IHBhdGguam9pbih2YXVsdF9yb290LCBcIndlZWtseS9cIik7XG5cbiAgICBuZXcgTm90aWNlKGAke3B5X3NjcmlwdH0gJHt2YXVsdF9yb290fS0+ICR7b3V0cHV0X2Rpcn0gYCk7XG4gICAgcmV0dXJuIGV4ZWNGaWxlKFxuICAgICAgcHlfc2NyaXB0LFxuXG4gICAgICBbdmF1bHRfcm9vdCwgb3V0cHV0X2RpciwgXCJjbGVhblwiXSxcbiAgICAgIFxuICAgICAgKGVycm9yLCBzdGRvdXQsIHN0ZGVycikgPT4ge1xuICAgICAgICBpZiAoZXJyb3IpIHtcbiAgICAgICAgICB0aHJvdyBlcnJvcjtcbiAgICAgICAgfVxuXG4gICAgICAgIG5ldyBOb3RpY2Uoc3RkZXJyKVxuICAgICAgICBuZXcgTm90aWNlKHN0ZG91dClcbiAgICAgICAgY29uc29sZS5sb2coc3RkZXJyKTtcbiAgICAgICAgY29uc29sZS5sb2coc3Rkb3V0KTtcbiAgICAgIH1cbiAgICApO1xuICB9XG5cbiAgYXN5bmMgb251bmxvYWQoKTogUHJvbWlzZTx2b2lkPiB7fVxufTtcbiJdLAogICJtYXBwaW5ncyI6ICI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBQUEsc0JBQXVEO0FBQ3ZELDJCQUF5QjtBQUN6QixXQUFzQjtBQUV0QixTQUFTLGFBQWEsS0FBa0I7QUFDdEMsTUFBSSxVQUFVLElBQUksTUFBTTtBQUV4QixNQUFJLG1CQUFtQixtQ0FBbUI7QUFDeEMsV0FBTyxRQUFRLFlBQVk7QUFBQSxFQUM3QjtBQUNBLFFBQU07QUFDUjtBQUVBLE9BQU8sVUFBVSxNQUFNLDBCQUEwQix1QkFBTztBQUFBLEVBQ3RELE1BQU0sU0FBUztBQUNiLFVBQU0sYUFBYSxhQUFhLEtBQUssR0FBRztBQUV4QyxVQUFNLGFBQWEsS0FBSyxJQUFJLE1BQU07QUFFbEMsVUFBTSxZQUFpQixVQUFLLFlBQVksWUFBWSxXQUFXLHVCQUF1QixZQUFZO0FBRWxHLFVBQU0sYUFBa0IsVUFBSyxZQUFZLFNBQVM7QUFFbEQsUUFBSSx1QkFBTyxHQUFHLGFBQWEsZ0JBQWdCLGFBQWE7QUFDeEQsZUFBTztBQUFBLE1BQ0w7QUFBQSxNQUVBLENBQUMsWUFBWSxZQUFZLE9BQU87QUFBQSxNQUVoQyxDQUFDLE9BQU8sUUFBUSxXQUFXO0FBQ3pCLFlBQUksT0FBTztBQUNULGdCQUFNO0FBQUEsUUFDUjtBQUVBLFlBQUksdUJBQU8sTUFBTTtBQUNqQixZQUFJLHVCQUFPLE1BQU07QUFDakIsZ0JBQVEsSUFBSSxNQUFNO0FBQ2xCLGdCQUFRLElBQUksTUFBTTtBQUFBLE1BQ3BCO0FBQUEsSUFDRjtBQUFBLEVBQ0Y7QUFBQSxFQUVBLE1BQU0sV0FBMEI7QUFBQSxFQUFDO0FBQ25DOyIsCiAgIm5hbWVzIjogW10KfQo=
